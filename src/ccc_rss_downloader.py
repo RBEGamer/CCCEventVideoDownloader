@@ -15,7 +15,7 @@ def createFolder(directory):
     except OSError:
         print ('Error: Creating directory. ' +  directory)
 
-root_folder = "./ccc_downloads"
+root_folder = "ccc_downloads"
 createFolder(root_folder)
 NewsFeed = feedparser.parse("https://media.ccc.de/updates.rdf")
 entrys = NewsFeed.entries
@@ -72,7 +72,7 @@ for entry in entrys:
 for ev in event:
     n = str(ev)
     createFolder(root_folder + "/" + n)
-    
+
 
 
 
@@ -82,12 +82,19 @@ for x in range(len(linklist)):
     ree_perc = 100.0-obj_Disk.percent
     print(ree_perc)
 
-    if(ree_perc < 10):#leave 10 percent disk pace
+    if(ree_perc < 3):#leave 10 percent disk pace
         print("SKIP DL FREE DISK SPACE")
         break
     if(os.path.exists(root_folder+ "/" +event[x] + "/" + filename[x] + ".mp4")):
         print("SKIP FILE EXITSTS")
         continue
     print("DL:" + linklist[x])
-    wget.download(linklist[x], root_folder+ "/" +event[x] + "/" + filename[x] + ".mp4")
+    try:
+        wget.download(
+            linklist[x],
+            root_folder + "/" + event[x] + "/" + filename[x] + ".mp4")
+    except:
+        print("error while downloading")
+        pass
+
     pass
