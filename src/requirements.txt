@@ -1,0 +1,4 @@
+wget
+feedparser
+unicodedata
+psutil
