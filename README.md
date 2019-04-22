@@ -23,8 +23,11 @@ Downloads the live stream videos from the media.ccc.events site using the rss fe
 
 * `$ python ccc_rss_downloader.py`
 
-The script will create a new folder `./ccc_downloads`( `see line 18`) with the donwloaded videos in it.
+* The script will create a new folder `./ccc_downloads`( `see line 18`) with the donwloaded videos in it.
+In this folder a subfolder will be created with the name of the event.
 
+
+* The amout of disk free disk space the script will leve free can be changed in `line 85`
 
 ## SPCIFY EVENT
 
