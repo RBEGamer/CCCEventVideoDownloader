@@ -29,6 +29,7 @@ In this folder a subfolder will be created with the name of the event.
 
 * The amout of disk free disk space the script will leve free can be changed in `line 85`
 
+* The script creates an `downloaded.txt` in which all file urls are collected. only if a video url is not in this file the video will be downlaoded. So you can easy delete a video after watching and the script will not download it again
 ## SPCIFY EVENT
 
 To change/add an event you can extend the `event_regex`(`see line  31`) variable with the name/regex of the events you want to download
