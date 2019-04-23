@@ -102,3 +102,7 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+src/ccc_downloads/
+*.mp4
+*.tmp
