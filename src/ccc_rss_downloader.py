@@ -15,8 +15,18 @@ def createFolder(directory):
     except OSError:
         print ('Error: Creating directory. ' +  directory)
 
+
+def createFile(fil):
+    try :
+        file = open(fil,"a")
+    except:
+        print("create dl file")
+    file.write("")
+    file.close()
+
 root_folder = "ccc_downloads"
 createFolder(root_folder)
+createFile(root_folder + "/downloaded.txt")
 NewsFeed = feedparser.parse("https://media.ccc.de/updates.rdf")
 entrys = NewsFeed.entries
 
@@ -88,11 +98,18 @@ for x in range(len(linklist)):
     if(os.path.exists(root_folder+ "/" +event[x] + "/" + filename[x] + ".mp4")):
         print("SKIP FILE EXITSTS")
         continue
+	
+    if linklist[x] in open(root_folder + "/downloaded.txt").read():
+        print("FILE ALREADY IN DOWNLOADED TXT")
+        continue
     print("DL:" + linklist[x])
     try:
         wget.download(
             linklist[x],
             root_folder + "/" + event[x] + "/" + filename[x] + ".mp4")
+        with open(root_folder + "/downloaded.txt", "a") as myfile:
+            myfile.write( linklist[x] + "\n")
+
     except:
         print("error while downloading")
         pass
